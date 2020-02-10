@@ -9,12 +9,12 @@ import (
 )
 
 func main() {
-	// runner(1000)
-	runner(10000)
+	fmt.Println("start===============")
+	times = runner(10000)
 }
 
 func runner(limit int64) []int64{
-	times := make([]int64, 4)
+	times := make([]int64, 5)
 	data := make([]int64, limit)
 	for i := 0; i < cap(data); i++{
 		data[i] = rand.Int63();
@@ -46,13 +46,21 @@ func runner(limit int64) []int64{
 	times[2] = time.Since(start). Microseconds()
 	fmt.Println("sequential parallel merge sort sorted, time = ",times[2])
 
-	// parallel merge sort(?)
+	// parallel merge sort
 	copy(tempData,data)
 	D := make([]int64,limit,limit)
 	start = time.Now()
-	p_merge_sort.PMergeSort(tempData, 0,limit-1, D, 0, 0)
+	p_merge_sort.PMergeSort(tempData, 0,limit-1, D, 0)
 	times[3] = time.Since(start). Microseconds()
 	fmt.Println("multithread parallel merge sort sorted, time = ",times[3])
+
+	// parallel merge sort(?)
+	copy(tempData,data)
+	E := make([]int64,limit,limit)
+	start = time.Now()
+	p_merge_sort.PMergeSortv1(tempData, 0,limit-1, E, 0, 0)
+	times[4] = time.Since(start). Microseconds()
+	fmt.Println("multithread parallel merge sort sorted (v1), time = ",times[4])
 
 	return times
 }
