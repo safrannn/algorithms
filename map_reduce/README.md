@@ -1,3 +1,4 @@
+# Map Reduce
 ### Introduction
 Purpose of this lab is to use map reduce model to find frequency of title-cased words from files. 
 Execution time of different size of input data and number of process are tested in this experiment.
@@ -16,6 +17,7 @@ Golang 1.13 is used for this experiment. Process limited is set using runtime.GO
 Number of the goroutine for mapper is the same as the process limit for each execution. 
 Execution time is reported in seconds.
  
+
  
 
 # Run
