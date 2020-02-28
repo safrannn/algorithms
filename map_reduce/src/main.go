@@ -25,6 +25,9 @@ func printResults(results [][]float64){
 
 func run_all(){
 	max_proc := runtime.NumCPU()
+	if max_proc > 8{
+		max_proc = 8
+	}
 	results := [][]float64{}
 
 	// run benchmarks to test result
