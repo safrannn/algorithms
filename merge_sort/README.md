@@ -6,5 +6,7 @@ First optimized version uses depth to limit the number of goroutine. If function
 Second optimized version is based upon the first optimized version and creates a pool of channels beforehand to reduce the time of channel creation during execution.
 
 # Run
-src/main.go
+```sh
+// src/main.go
 $ go run main.go
+```
